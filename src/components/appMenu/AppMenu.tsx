@@ -10,15 +10,16 @@ function AppMenu() {
   const [isOpen, setIsOpen] = useState(false)
 
   const menuOptions: MenuOptionModel[] = [
-    {label: "Consultar Bitácora", to: "/Consultar Bitácora", icon: Inbox},
-    {label: "Planeamiento Semanal", to: "/Planeamiento Semanal", icon: Inbox},
-    {label: "Notas Diarias", to: "/Notas Diarias", icon: Inbox},
-    {label: "Revision Semanal", to: "/Revision Semanal", icon: Inbox},
-    {label: "Como usar", to: "/Como usar", icon: Inbox},
+    {label: "Inicio", link: "/", icon: Inbox},
+    {label: "Consultar Bitácora", link: "/Consultar Bitácora", icon: Inbox},
+    {label: "Planeamiento Semanal", link: "/Planeamiento Semanal", icon: Inbox},
+    {label: "Notas Diarias", link: "/daily-notes-list", icon: Inbox},
+    {label: "Revision Semanal", link: "/Revision Semanal", icon: Inbox},
+    {label: "Como usar", link: "/Como usar", icon: Inbox},
   ]
   const menuPersonalOptions: MenuOptionModel[] = [
-    {label: "Perfil", to: "/Perfil", icon: Inbox},
-    {label: "Opciones", to: "/Opciones", icon: Inbox},
+    {label: "Perfil", link: "/Perfil", icon: Inbox},
+    {label: "Opciones", link: "/Opciones", icon: Inbox},
   ]
 
 
@@ -52,7 +53,7 @@ function AppMenu() {
         >
           <List>
             {menuOptions.map((menu, index) => (
-              <ListItem key={menu.label} disablePadding onClick={() => navigate(menu.to)}>
+              <ListItem key={menu.label} disablePadding onClick={() => navigate(menu.link)}>
                 <ListItemButton>
                   <ListItemIcon>
                     <menu.icon />
@@ -65,7 +66,7 @@ function AppMenu() {
           <Divider />
           <List>
             {menuPersonalOptions.map((menu, index) => (
-              <ListItem key={menu.label} disablePadding onClick={() => navigate(menu.to)}>
+              <ListItem key={menu.label} disablePadding onClick={() => navigate(menu.link)}>
               <ListItemButton>
                   <ListItemIcon>
                     <menu.icon />
