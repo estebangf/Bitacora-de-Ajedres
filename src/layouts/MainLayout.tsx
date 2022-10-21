@@ -7,10 +7,14 @@ import { Paper } from "@mui/material";
 
 function MainLayout() {
   return (
-    <div>
+    <div style={{ display: 'flex' }}>
       <ToolBarApp />
-      <Box sx={{ pt: 10 }}>
-        <Paper sx={{ m: 10, p: 5, position: 'relative'}}>
+      <Box sx={{
+        width: "100%",
+      }}>
+        <Paper sx={{
+          m: 5, p: 5,
+        }}>
           <Outlet />
         </Paper>
       </Box>
