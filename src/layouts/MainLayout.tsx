@@ -11,7 +11,7 @@ function MainLayout() {
         width: "100%",
       }}>
         <Paper sx={{
-          m: 5, p: 5, pt: 2,
+          m: 3, p: 2,
           position: 'relative'
         }}>
           <Outlet />

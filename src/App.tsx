@@ -8,13 +8,18 @@ import { createTheme } from '@mui/material';
 import DailyNote from './views/DailyNote';
 import DailyNotesList from './views/DailyNotesList';
 import Home from './views/Home';
+import RequireAuth from './components/auth/RequireAuth';
+import AuthProvider from './features/auth/AuthProvider';
+import LogIn from './views/LogIn';
+import SignIn from './views/SignIn';
+import useAuth from './tools/useAuth';
 
 
 const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      light: '#f5bf81',
+      light: '#ffc889',
       main: '#7b4b27',
       dark: '#251004',
       contrastText: '#ffc786',
@@ -33,7 +38,7 @@ const lightTheme = createTheme({
     // divider?: string;
     // action?: Partial<TypeAction>;
     background: {
-      paper: '#f5bf81',
+      paper: '#ffc889',
     }
     // getContrastText?: (background: string) => string;
   },
@@ -49,12 +54,14 @@ const darkTheme = createTheme({
 });
 
 function App() {
+  const auth = useAuth();
+
   return (
-    <div className='App'>
+    <div className={auth.user ? 'App-logued' : 'App'}>
       <ThemeProvider theme={lightTheme}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MainLayout />}>
+            <Route path="/" element={<RequireAuth required={true}><MainLayout /></RequireAuth>}>
               <Route path="/" element={<Home />} />
               <Route path="/Consultar Bitácora" element={<div>Consultar Bitácora</div>} />
               <Route path="/Planeamiento Semanal" element={<div>Planeamiento Semanal</div>} />
@@ -67,6 +74,10 @@ function App() {
               <Route path="/Perfil" element={<div>Perfil</div>} />
               <Route path="/Opciones" element={<div>Opciones</div>} />
             </Route>
+            {/* <Route path="/about" element={<About />} /> */}
+
+            <Route path="/login" element={<RequireAuth required={false} exclud={true}><LogIn /></RequireAuth>} />
+            <Route path="/signin" element={<RequireAuth required={false} exclud={true}><SignIn /></RequireAuth>} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
